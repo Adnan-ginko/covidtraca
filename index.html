@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+</head>
+<style>
+    body{
+        position: relative;
+        left: 50px;
+    }
+    td{
+        position: relative;
+        left: 50px;
+        text-align: center;
+        background-color: brown;
+        color: white;
+
+    }
+    thead{
+        position: relative;
+        left: 50px;
+        background-color: rgb(106, 106, 202);
+        
+    }
+</style>
+<body>
+    <table  style="width: 50%;">
+        <thead>
+            <!-- <td>No</td> -->
+            <th>Country</th>
+            <th>Confirmed</th>
+            <th>Death</th>
+            <th>Recoveries</th>
+            <th>Active</th>
+          </thead>
+          <tbody id="main">
+
+          </tbody>
+    </table>
+    <script type="text/jsx">
+
+
+        const data =[
+        {id: 1, country:"Italy",confirmed:3474,death:472,recoveries:2812,active:190},
+        {id:2,country:"Brazil",confirmed:21376,death:556,recoveries:14806,active:6014},
+        {id:3,country:"Russia",confirmed:2930,death:21,recoveries:2254,active:655},
+        {id:4,country:"Mexico",confirmed:4382,death:279,recoveries:3731,active:372},
+        {id:5,country:"Japan",confirmed:2831,death:36,recoveries:917,active:1878},
+        {id:6,country:"Japan",confirmed:32,death:0,recoveries:16,active:16},
+        {id:7,country:"Brazil",confirmed:65916,death:1654,recoveries:58825,active:5437},
+        {id:8,country:"Canada",confirmed:11430,death:208,recoveries:10097,active:1125},
+        {id:9,country:"Russia",confirmed:9809,death:85,recoveries:7952,active:1772}
+        ];
+
+  function App(props){
+      console.log(props)
+        return(
+            
+                <tr>
+                 <td className="just_table">{props.text}</td>
+                 <td className="just_confirm">{props.confirmed}</td>
+                 <td className="just_confirm">{props.death}</td>
+                 <td className="just_confirm">{props.recoveries}</td>
+                 <td className="just_confirm">{props.active}</td>
+
+                 </tr>
+                
+                
+                
+        );
+    }
+    let textList = data.map(item => <App key={item.id} text={item.country} confirmed={item.confirmed} death={item.death} recoveries={item.recoveries} active={item.active}/>);
+
+    ReactDOM.render(
+        <React.StrictMode>
+          {textList}
+        </React.StrictMode>, document.getElementById('main'));
+    </script>
+</body>
+</html>
